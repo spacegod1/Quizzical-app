@@ -2,4 +2,4 @@
 
 ---
 
-Not your usual test app. Built in React
+Test your might. Built in React
