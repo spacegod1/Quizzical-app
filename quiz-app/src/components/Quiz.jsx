@@ -15,7 +15,7 @@ export default function Quiz(props) {
     return <Options key={item.id} value={item.answer} />;
   });
 
-  //figure out the answer selection and cross check with correct answers
+  //figure out the answer-selection and cross check with correct answers
 
   return (
     <section>
