@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Options(props) {
   return (
-    <div className={props.check ? "correct-answer option" : "option"}>
+    <div className="option" onClick={props.selected}>
       {props.value}
     </div>
   );

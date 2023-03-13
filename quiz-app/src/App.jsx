@@ -61,12 +61,38 @@ function App() {
         question={item.question}
         answers={item.answers}
         correctAnswer={item.correctAnswer}
+        selection={handleSelection}
+        id={item.id}
       />
     );
   });
 
   function startQuiz() {
     setNewQuiz((prevState) => !prevState);
+  }
+
+  function handleSelection(quizId, answerId) {
+    setQuizData((prevData) => {
+      return prevData.map((quizElement) => {
+        if (quizElement.id === quizId) {
+          return {
+            ...quizElement,
+            answers: quizElement.answers.map((ans) => {
+              if (ans.id === answerId) {
+                return {
+                  ...ans,
+                  isSelected: !ans.isSelected,
+                };
+              } else
+                return {
+                  ...ans,
+                  isSelected: false,
+                };
+            }),
+          };
+        } else return quizElement;
+      });
+    });
   }
 
   return (

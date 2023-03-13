@@ -12,10 +12,17 @@ export default function Quiz(props) {
   console.log(props.answers);
 
   const possibleAnswers = props.answers.map((item) => {
-    return <Options key={item.id} value={item.answer} />;
+    return (
+      <Options
+        key={item.id}
+        value={item.answer}
+        selected={() => props.selection(props.id, item.id)}
+      />
+    );
   });
 
-  //figure out the answer selection
+  //update function to capture selected answers per question
+  //
 
   return (
     <section>
