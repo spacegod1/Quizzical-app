@@ -7,5 +7,3 @@ export default function Options(props) {
     </div>
   );
 }
-
-// props state
