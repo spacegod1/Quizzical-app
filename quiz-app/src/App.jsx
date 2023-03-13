@@ -69,6 +69,7 @@ function App() {
     setNewQuiz((prevState) => !prevState);
   }
 
+  // create button
   return (
     <div className="App">
       {newQuiz ? (
