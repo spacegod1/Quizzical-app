@@ -69,7 +69,7 @@ function App() {
     setNewQuiz((prevState) => !prevState);
   }
 
-  // create button to check when quiz ends to also start again
+  // create button to check when quiz ends to also start
   return (
     <div className="App">
       {newQuiz ? (

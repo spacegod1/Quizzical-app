@@ -8,4 +8,4 @@ export default function Options(props) {
   );
 }
 
-// props check
+// props
