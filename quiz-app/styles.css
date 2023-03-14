@@ -13,6 +13,18 @@ body {
   flex-direction: column;
 }
 
+.score-board > button {
+  margin: 30px;
+  width: 240px;
+  letter-spacing: 0.7px;
+}
+
+.score-board {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 /* .blob1 {
   position: absolute;
   top: 0;
@@ -39,7 +51,8 @@ h2 {
   font-weight: 700;
 }
 
-.start-desc {
+.start-desc,
+.score {
   font-family: "Inter", sans-serif;
   color: #293264;
   font-size: 16px;
@@ -80,16 +93,6 @@ button {
 
 hr {
   border: solid 1px #dbdef0;
-}
-
-.correct-answer {
-  background-color: #94d7a2;
-  border: none;
-}
-
-.wrong-answer {
-  background-color: #f8bcbc;
-  border: none;
 }
 
 /* @media screen and (max-width: 480px) {

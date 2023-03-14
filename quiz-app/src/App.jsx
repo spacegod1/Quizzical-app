@@ -6,8 +6,12 @@ import { nanoid } from "nanoid";
 function App() {
   const [newQuiz, setNewQuiz] = React.useState(true);
   const [quizData, setQuizData] = React.useState([]);
+  const [score, setScore] = React.useState(0);
+  const [endQuiz, setEndQuiz] = React.useState(false);
 
-  React.useEffect(() => {
+  React.useEffect(() => fetchData(), []);
+
+  function fetchData() {
     fetch(
       "https://the-trivia-api.com/api/questions?categories=geography,history,science,society_and_culture,sport_and_leisure&limit=5&difficulty=easy"
     )
@@ -38,7 +42,7 @@ function App() {
         }
         setQuizData(questionSet);
       });
-  }, []);
+  }
 
   // Fisher Yates algorithm to shuffle an array
   function shuffleArr(array) {
@@ -63,6 +67,7 @@ function App() {
         correctAnswer={item.correctAnswer}
         selection={handleSelection}
         id={item.id}
+        endQuiz={endQuiz}
       />
     );
   });
@@ -95,12 +100,48 @@ function App() {
     });
   }
 
+  function checkCount() {
+    let quizArr = [...quizData];
+    let scoreCount = 0;
+
+    setEndQuiz(true);
+
+    for (let i = 0; i < quizArr.length; i++) {
+      let answers = quizArr[i].answers;
+
+      answers.map((ans) => {
+        if (ans.isSelected) {
+          if (ans.answer === quizArr[i].correctAnswer) {
+            scoreCount += 1;
+          }
+        }
+      });
+    }
+
+    return setScore(scoreCount);
+  }
+
+  function playAgain() {
+    fetchData();
+    setNewQuiz(true);
+    setEndQuiz((prevState) => !prevState);
+  }
+
   return (
     <div className="App">
       {newQuiz ? (
         <Begin quizState={newQuiz} start={startQuiz} />
       ) : (
-        renderQuestions
+        <>
+          {renderQuestions}
+
+          <div className="score-board">
+            {endQuiz && <h5 className="score">You scored {score}/5 correct</h5>}
+            <button onClick={endQuiz ? playAgain : checkCount}>
+              {endQuiz ? "Play Again" : "Check Answers"}
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

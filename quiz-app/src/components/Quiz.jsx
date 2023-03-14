@@ -9,7 +9,6 @@ export default function Quiz(props) {
   };
 
   // D6DBF5
-  console.log(props.answers);
 
   const possibleAnswers = props.answers.map((item) => {
     return (
@@ -17,12 +16,17 @@ export default function Quiz(props) {
         key={item.id}
         value={item.answer}
         selected={() => props.selection(props.id, item.id)}
+        isSelected={item.isSelected}
+        isCorrect={item.isCorrect}
+        endQuiz={props.endQuiz}
       />
     );
   });
 
   //update function to capture selected answers per question
   //
+
+  // check correct answers against selected answers and calculate score
 
   return (
     <section>
