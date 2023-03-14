@@ -8,8 +8,10 @@ function App() {
   const [quizData, setQuizData] = React.useState([]);
   const [score, setScore] = React.useState(0);
   const [endQuiz, setEndQuiz] = React.useState(false);
+  const [allAnswersSelected, setAllAnswersSelected] = React.useState(false);
 
   React.useEffect(() => fetchData(), []);
+  React.useEffect(() => markAll(), [quizData]);
 
   function fetchData() {
     fetch(
@@ -121,6 +123,14 @@ function App() {
     return setScore(scoreCount);
   }
 
+  function markAll() {
+    let checkMarked = quizData.every((quiz) => {
+      return quiz.answers.some((ans) => ans.isSelected);
+    });
+
+    checkMarked ? setAllAnswersSelected(true) : setAllAnswersSelected(false);
+  }
+
   function playAgain() {
     fetchData();
     setNewQuiz(true);
@@ -128,7 +138,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App container-fluid">
       {newQuiz ? (
         <Begin quizState={newQuiz} start={startQuiz} />
       ) : (
@@ -137,7 +147,11 @@ function App() {
 
           <div className="score-board">
             {endQuiz && <h5 className="score">You scored {score}/5 correct</h5>}
-            <button onClick={endQuiz ? playAgain : checkCount}>
+            <button
+              disabled={!allAnswersSelected}
+              onClick={endQuiz ? playAgain : checkCount}
+              style={!allAnswersSelected ? { opacity: "50%" } : {}}
+            >
               {endQuiz ? "Play Again" : "Check Answers"}
             </button>
           </div>

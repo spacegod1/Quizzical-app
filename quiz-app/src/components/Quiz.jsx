@@ -3,13 +3,6 @@ import React from "react";
 import Options from "./Options";
 
 export default function Quiz(props) {
-  const styles = {
-    backgroundColor: "#94d7a2",
-    border: "none",
-  };
-
-  // D6DBF5
-
   const possibleAnswers = props.answers.map((item) => {
     return (
       <Options
@@ -23,13 +16,10 @@ export default function Quiz(props) {
     );
   });
 
-  //update function to capture selected answers per question
-  //
-
-  // check correct answers against selected answers and calculate score
+  // make app responsive to other view ports
 
   return (
-    <section>
+    <section className="quiz-set">
       <h2>{props.question}</h2>
       <div className="possible-answers">{possibleAnswers}</div>
       <hr />

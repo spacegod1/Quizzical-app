@@ -11,18 +11,20 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  margin: 4rem 0 0;
 }
 
 .score-board > button {
   margin: 30px;
   width: 240px;
-  letter-spacing: 0.7px;
+  /* letter-spacing: 0.5px; */
 }
 
 .score-board {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: 15px;
 }
 
 /* .blob1 {
@@ -42,12 +44,13 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  gap: 1rem;
 }
 
 h2 {
   font-family: "Karla", sans-serif;
   color: #293264;
-  font-size: 31.25px;
+  font-size: 1.8rem;
   font-weight: 700;
 }
 
@@ -55,7 +58,7 @@ h2 {
 .score {
   font-family: "Inter", sans-serif;
   color: #293264;
-  font-size: 16px;
+  font-size: 1.2rem;
   font-weight: 400;
 }
 
@@ -68,7 +71,7 @@ button {
   border: none;
   cursor: pointer;
   font-family: "Karla", sans-serif;
-  font-size: 16px;
+  font-size: 1.1rem;
 }
 
 .quiz-button:focus {
@@ -78,13 +81,14 @@ button {
 .possible-answers {
   display: flex;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 .option {
   border: solid 1px black;
   text-align: center;
-  margin-right: 20px;
-  padding: 3px 13px;
+  margin: 0.5rem;
+  padding: 0.15rem 0.65rem;
   border-radius: 8px;
   color: #293264;
   font-family: "Karla", sans-serif;
@@ -93,6 +97,10 @@ button {
 
 hr {
   border: solid 1px #dbdef0;
+}
+
+.quiz-set {
+  width: 90%;
 }
 
 /* @media screen and (max-width: 480px) {
